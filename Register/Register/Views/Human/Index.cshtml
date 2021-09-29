@@ -1,0 +1,90 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Register.Models
+
+@model HumanModel
+<form>
+    <a href='@Url.Action("HumanList", "Human")'>لیست ثبت نام </a>
+</form>
+<br />
+
+<div class="container" id="RegisterForm" style="float:right;direction :rtl ;">
+   
+    @using (Html.BeginForm("Create", "Human", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-25">
+                @Html.LabelFor(m => m.Name)
+                @Html.DisplayFor(m => m.Name)
+            </div>
+            <div class="col-75">
+                @Html.EditorFor(m => m.Name)
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                @Html.LabelFor(m => m.Family)
+            </div>
+            <div class="col-75">
+                @Html.EditorFor(m => m.Family)
+                @Html.ValidationMessageFor(m => m.Family)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                @Html.LabelFor(m => m.Age)
+            </div>
+            <div class="col-75">
+                @Html.EditorFor(m => m.Age)
+                @*@Html.ValidationMessageFor(m => m.Age)*@
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                @Html.LabelFor(m => m.Gender)
+            </div>
+            <div class="col-75">
+                @Html.RadioButtonFor(e => e.Gender, "True", new { @class = "radio black" })<span> مرد </span>
+                @Html.RadioButtonFor(e => e.Gender, "False", new { @class = "radio black" })<span> زن </span>
+                @*<select class="form-control" name="Gender" id="Gender">
+            <option value="False">زن</option>inline
+            <option value="True">مرد</option>
+        </select> *@
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                @Html.LabelFor(m => m.Phone)
+            </div>
+            <div class="col-75">
+                @Html.EditorFor(m => m.Phone)
+                @Html.ValidationMessageFor(m => m.Phone)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                @Html.LabelFor(m => m.NationalCode)
+            </div>
+            <div class="col-75">
+                @Html.EditorFor(m => m.NationalCode)
+                @Html.ValidationMessageFor(m => m.NationalCode)
+            </div>
+        </div>
+       
+        <div class="row">
+            <button type="submit"> ثبت </button>
+        </div>
+    }
+
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

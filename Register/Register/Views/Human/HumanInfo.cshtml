@@ -1,0 +1,95 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Register.Models
+
+@model HumanModel
+@*<head>
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</head>*@
+
+<br />
+<div class="row" style="float:right;direction :rtl;">
+    <div class="col-md-9">
+
+        @using (Html.BeginForm("Update", "Human", FormMethod.Post))
+        {
+            @Html.HiddenFor(model => model.Id)
+            @*<form asp-controller="Human" asp-action="Update" method="post" enctype="multipart/form-data">
+                <input type="text" id="Id" asp-for="Id" value="@Model.Id" style="display:none;">*@
+
+            <div class="row">
+                <div class="col-25">
+                    @Html.LabelFor(m => m.Name)
+                    @Html.DisplayFor(m => m.Name)
+                </div>
+                <div class="col-75">
+                    @Html.EditorFor(m => m.Name)
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    @Html.LabelFor(m => m.Family)
+                </div>
+                <div class="col-75">
+                    @Html.EditorFor(m => m.Family)
+                    @Html.ValidationMessageFor(m => m.Family)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    @Html.LabelFor(m => m.Age)
+                </div>
+                <div class="col-75">
+                    @Html.EditorFor(m => m.Age)
+                    @Html.ValidationMessageFor(m => m.Age)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    @Html.LabelFor(m => m.Gender)
+                </div>
+                <div class="col-75">
+                    @Html.RadioButtonFor(e => e.Gender, "True", new { @class = "radio black" })<span> مرد </span>
+                    @Html.RadioButtonFor(e => e.Gender, "False", new { @class = "radio black" })<span> زن </span>
+                    @*<select class="form-control" name="Gender" id="Gender">
+                            <option value="False">زن</option>
+                            <option value="True">مرد</option>
+                        </select>*@
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    @Html.LabelFor(m => m.Phone)
+                </div>
+                <div class="col-75">
+                    @Html.EditorFor(m => m.Phone)
+                    @Html.ValidationMessageFor(m => m.Phone)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    @Html.LabelFor(m => m.NationalCode)
+                </div>
+                <div class="col-75">
+                    @Html.EditorFor(m => m.NationalCode)
+                    @Html.ValidationMessageFor(m => m.NationalCode)
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit">ثبت</button>
+            </div>
+            @*</form>*@
+        }
+    </div>
+</div>
+
+    @section Scripts{
+        <partial name="_ValidationScriptsPartial" />
+    }

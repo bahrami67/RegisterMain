@@ -1,0 +1,83 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<HumanModel>
+
+<head>
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    @*  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>*@
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<div class="container">
+    @*@{int CurrentId = 0; }*@
+
+    <div>
+    </div>
+    <div class="col-75">
+        @Html.DisplayName("جستجو براساس کدملی")
+        <form>
+            <input type="search" id="search" name="q" aria-label="Search through site content">
+            <button asp-controller="Human" asp-action="Search" asp-route-string="q">جستجو</button>
+        </form>
+    </div>
+
+    <form>
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" style=" display :none "> @Html.DisplayNameFor(m => Model[0].Id) </th>
+                                <th scope="col"> @Html.DisplayNameFor(m => Model[0].Name) </th>
+                                <th scope="col"> @Html.DisplayNameFor(m => Model[0].Family) </th>
+                                <th scope="col"> @Html.DisplayNameFor(m => Model[0].NationalCode)</th>
+                                <th scope="col"> @Html.DisplayNameFor(m => Model[0].Phone) </th>
+                                <th scope="col"> @Html.DisplayNameFor(m => Model[0].Age) </th>
+                                <th scope="col"> @Html.DisplayNameFor(m => Model[0].Gender) </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td style=" display:none"> @Html.DisplayFor(m => item.Id) </td>
+                                    <td> @Html.DisplayFor(m => item.Name) </td>
+                                    <td> @Html.DisplayFor(m => item.Family) </td>
+                                    <td> @Html.DisplayFor(m => item.NationalCode) </td>
+                                    <td> @Html.DisplayFor(m => item.Phone) </td>
+                                    <td> @Html.DisplayFor(m => item.Age)</td>
+                                    <td>
+                                        @if (item.Gender == true)
+                                        {@Html.DisplayName("مرد")}
+                                    else
+                                    { @Html.DisplayName("زن")}
+                                    </td>
+                                    <td>
+                                        <button asp-controller="Human" asp-action="HumanInfo" asp-route-Id="@item.Id">ویرایش</button>
+                                    </td>
+                                    <td>
+                                        @*@{CurrentId = @item.Id;
+                                        }*@
+                                        <a asp-controller="Human" asp-action="HumanDeleteInfo" asp-route-Id="@item.Id">حذف</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+

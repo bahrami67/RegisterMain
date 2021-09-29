@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "DeleteHuman";
+}
+@using Register.Models
+
+@model HumanModel
+@*<head>
+        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    </head>*@
+<form>
+    <a asp-action="Index">برگشت به صفحه نخست</a>
+</form>
+
+<div class="container" id="RegisterForm" style="float:right;direction :rtl ;">
+    @using (Html.BeginForm("DeleteHuman", "Human", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.Id)
+
+        <dl class="row" style="direction:rtl">
+            @*<dt class="col-sm-2" style="display: none">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10" style="display: none">
+                @Html.DisplayFor(model => model.Id)
+            </dd>*@
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Family)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Family)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Age)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.NationalCode)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.NationalCode)
+            </dd>
+        </dl>
+        <h3 style=" float: right">آیا از حذف خود مطمئن هستید؟</h3>
+
+        <button type="submit" class="btn btn-danger">حذف</button>
+    }
+</div>
